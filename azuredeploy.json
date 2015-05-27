@@ -148,7 +148,7 @@
 	},
 	{
 		"type": "Microsoft.Network/publicIPAddresses",
-		"name": "[concat('nodePublicIP', copyindex())]",
+		"name": "[concat('slavePublicIP', copyindex())]",
 		"copy": {
 			"name": "ipLoop",
 			"count": "[parameters('numberOfSlaves')]"
@@ -178,7 +178,7 @@
 				"properties": {
 					"privateIPAllocationMethod": "Dynamic",
 					"publicIPAddress": {
-						"id": "[resourceId('Microsoft.Network/publicIpAddresses', concat('nodePublicIP', copyindex()))]"
+						"id": "[resourceId('Microsoft.Network/publicIpAddresses', concat('slavePublicIP', copyindex()))]"
 					},
 					"subnet": {
 						"id": "[variables('subnet1Ref')]"
@@ -303,15 +303,15 @@
 	}],
 	"outputs": {
 		"masterURL0": {
-			"value": "[concat('master0-', parameters('uuid'), '.cloudapp.azure.com')]",
+			"value": "[concat('master0-', parameters('uuid'), '.eastasia.cloudapp.azure.com')]",
 			"type": "string"
 		},
 		"masterURL1": {
-			"value": "[concat('master1-', parameters('uuid'), '.cloudapp.azure.com')]",
+			"value": "[concat('master1-', parameters('uuid'), '.eastasia.cloudapp.azure.com')]",
 			"type": "string"
 		},
 		"masterURL2": {
-			"value": "[concat('master2-', parameters('uuid'), '.cloudapp.azure.com')]",
+			"value": "[concat('master2-', parameters('uuid'), '.eastasia.cloudapp.azure.com')]",
 			"type": "string"
 		}
 	}
